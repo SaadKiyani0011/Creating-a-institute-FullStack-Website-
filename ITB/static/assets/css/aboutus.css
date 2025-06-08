@@ -1,0 +1,160 @@
+
+
+/* About Main Content Styles */
+.about-main {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+.section-heading h2 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.text-content {
+    margin-bottom: 60px;
+}
+
+.text-content p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: #333;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.stat-item {
+    background: #f0f7fc;
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 4px solid #3498db;
+}
+
+.stat-item span {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+/* Features List */
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    column-count: 2;
+    column-gap: 30px;
+}
+
+.features-list li {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+    break-inside: avoid;
+}
+
+.features-list i {
+    color: #3498db;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+/* Apply Now Section */
+.apply-now-section {
+    text-align: center;
+    padding: 70px 0;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    margin-top: 40px;
+}
+
+.apply-now-section h3 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.apply-now-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 45px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
+    border: 2px solid #e74c3c;
+    text-decoration: none;
+}
+
+.apply-now-btn:hover {
+    background-color: transparent;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(231, 76, 60, 0.4);
+}
+
+.apply-now-btn i {
+    margin-left: 12px;
+    transition: transform 0.3s ease;
+}
+
+.apply-now-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .features-list {
+        column-count: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-heading h2 {
+        font-size: 1.8rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .apply-now-section {
+        padding: 50px 0;
+    }
+    
+    .apply-now-section h3 {
+        font-size: 1.8rem;
+        padding: 0 20px;
+    }
+    
+    .apply-now-btn {
+        padding: 14px 35px;
+        font-size: 1.1rem;
+    }
+}

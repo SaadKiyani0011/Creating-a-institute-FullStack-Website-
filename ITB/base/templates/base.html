@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}IT Excellence Center{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'assets\css\NHF.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\css\home.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\css\aboutus.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\css\courses.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\css\services.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\css\apply.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\css\login.css' %}">
+    <link rel="stylesheet" href="{% static 'assets\css\contactus.css' %}">
+    <link rel="shortcut icon" href="{% static 'assets\images\ITB logo.jpg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets\javascript\script.js' %}">
+    <meta http-equiv="origin-trial" content="none">
+    <meta http-equiv="refresh-scroll" content="no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo on Left -->
+            <div class="nav-logo">
+                <a href="#"><img src="{% static 'assets\images\ITB logo.jpg' %}" alt="Institute Logo" class="logo"></a>
+            </div>
+            <!-- Centered Navigation -->
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="{% url 'aboutus' %}" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="{% url 'courses' %}" class="nav-link">Courses</a></li>
+                <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="{% url 'apply' %}" class="nav-link">Enroll Now</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact Us</a></li>
+                
+            </ul>
+            
+            <!-- Auth Buttons on Right -->
+            <div class="auth-buttons">
+                <a href="login.html" class="nav-auth-link login-btn">Login</a>
+                <a href="signup.html" class="nav-auth-link signup-btn">Sign Up</a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-content">
+                <img src="{% static 'assets\images\ITB logo.jpg' %}" alt="Institute Logo" class="header-logo">
+                <h1 class="welcome-message">Welcome to IT Excellence Center</h1>
+                <p class="welcome-subtext">Where knowledge meets innovation and excellence</p>
+                <div class="header-buttons">
+                    <a href="{% url 'courses' %}" class="btn btn-primary">Explore Courses</a>
+                    <a href="{% url 'contact' %}" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    {% block maincontent %}
+        
+    {% endblock  %}
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="{% static 'assets\images\ITB logo.jpg' %}" alt="Institute Logo" class="footer-logo-img">
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                            <li><a href="{% url 'courses' %}">Courses</a></li>
+                            <li><a href="{% url 'services' %}">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Class Schedule</a></li>
+                            <li><a href="#">Faculty</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Education St, City</li>
+                            <li><i class="fas fa-phone"></i> +92 344 917 0592</li>
+                            <li><i class="fas fa-envelope"></i> info@itexcellence.edu</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 IT Excellence Center Pvt(Ltd). All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
