@@ -2,93 +2,70 @@
 {% load static %}
 
 {% block title %}IT Excellence Center{% endblock title %}
+
 {% block maincontent %}
-    
-
-    
-    <!-- Main Content -->
-    <main>
-        <!-- Courses/Services Section -->
-        <section class="courses-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Cloud Provides Customized In Trainings</h2>
-                    <div class="divider"></div>
-                </div>
-                
-                <div class="courses-grid">
-                    <!-- Cyber Security Card -->
-                    <div class="course-card">
-                        <div class="course-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Cyber Security & Ethical Hacking</h3>
-                        <p>The term "Cybersecurity" is used to describe the process of preventing harm to computer systems, networks, and private data through intrusion, misuse, disruption, modification, or destruction. Security digital ' %}assets entails taking measures to protect their privacy, authenticity, and accessibility.</p>
-                        <a href="#" class="course-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <!-- Digital Marketing Card -->
-                    <div class="course-card">
-                        <div class="course-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <h3>SEO & Digital Marketing</h3>
-                        <p>Promote your goods and services through digital mediums like the web, search engines, social media, and mobile apps with the help of digital marketing. Marketing is the process of developing and deploying plans to expand exposure to and interactively via a specific demographic of consumers.</p>
-                        <a href="#" class="course-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <!-- Cloud Computing Card -->
-                    <div class="course-card">
-                        <div class="course-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <h3>Network & Cloud Computing</h3>
-                        <p>The term "networking" refers to the use of computer networks to enable computers and other devices to communicate and share resources. Yet, cloud computing provides scalable and inexpensive solutions by making computing resources like servers and storage available on-demand over the internet.</p>
-                        <a href="#" class="course-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="explore-more">
-                    <a href="courses.html" class="explore-btn">Explore More Courses <i class="fas fa-arrow-right"></i></a>
-                </div>
+<main>
+    <!-- Courses/Services Section -->
+    <section class="courses-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Cloud Provides Customized In Trainings</h2>
+                <div class="divider"></div>
             </div>
-        </section>
+            
+            <div class="courses-grid">
+                {% for course in courses %}
+                <div class="course-card">
+                    <div class="course-icon">
+                        <i class="{{ course.icon }}"></i>
+                    </div>
+                    <h3>{{ course.title }}</h3>
+                    <p>{{ course.description }}</p>
+                    <a href="#" class="course-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                {% endfor %}
+            </div>
 
-        <!-- About Us Section -->
-        <section class="about-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>About Our Institute</h2>
-                    <div class="divider"></div>
+            <div class="explore-more">
+                <a href="{% url 'courses' %}" class="explore-btn">Explore More Courses <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Our Institute</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="mission-vision">
+                        <h3>Mission Statement</h3>
+                        <blockquote>
+                            {{ mission_vision.mission|safe }}
+                        </blockquote>
+                        
+                        <h3>Vision Statement</h3>
+                        <p>
+                            {{ mission_vision.vision|safe }}
+                        </p>
+                    </div>
                 </div>
                 
-                <div class="about-content">
-                    <div class="about-text">
-                        <div class="mission-vision">
-                            <h3>Mission Statement</h3>
-                            <blockquote>
-                                "To empower individuals and organizations with the knowledge and skills needed to excel in the rapidly evolving field of Information Technology. We are committed to providing high-quality, comprehensive, and practical IT training programs that equip our students with the latest industry-relevant skills, tools, and technologies. Our mission is to enable our students to unlock their full potential, enhance their career prospects, and contribute to the growth of the IT industry in Pakistan and beyond. We strive to deliver exceptional training experiences through experienced instructors, state-of-the-art facilities, and hands-on learning approaches. We are dedicated to fostering a culture of continuous learning, collaboration, and innovation, and to promoting ethical and professional practices within the IT community. Our ultimate goal is to be the preferred choice for IT training in Lahore, recognized for our excellence, integrity, and commitment to customer satisfaction."
-                            </blockquote>
-                            
-                            <h3>Vision Statement</h3>
-                            <p>
-                                 IT Excellence Center is renowned worldwide for the high quality of its educational and training courses. Many of our clients took their first computer training courses with us at an introductory and beginner level and have progressed with us to the advanced and expert levels. best Cyber Security Institute in Lahore. For the busy professionals who, due to time clash or tight schedule, prefer to work on self-paced style independently, Best Cloud Computing Institute in Lahore. we offer on-line computer training programs which are customized across the diverse skill set, hierarchy of designation and targeted job description to suit all levels. We provide high-tech IT courses in a friendly and supportive learning environment with special emphasis on cognitive phycology, project based learning and "hands-on" activities. Our trainings are designed precisely according to the latest industry trends and hot market demands. Being the best Cisco training institute in Pakistan.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="ceo-profile">
-                        <div class="ceo-image">
-                            <img src="{% static 'assets\images\CEO.jpg' %}" alt="AbuZaid Khattak, CEO of IT Excellence Center">
-                            <div class="ceo-info">
-                                <h4>AbuZaid Khattak</h4>
-                                <p>CEO - IT Excellence Center</p>
-                            </div>
+                <div class="ceo-profile">
+                    <div class="ceo-image">
+                        <img src="{{ ceo.image.url }}" alt="{{ ceo.name }}, CEO of IT Excellence Center">
+                        <div class="ceo-info">
+                            <h4>{{ ceo.name }}</h4>
+                            <p>{{ ceo.position }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-{% endblock  %}
-    
+        </div>
+    </section>
+</main>
+{% endblock %}
