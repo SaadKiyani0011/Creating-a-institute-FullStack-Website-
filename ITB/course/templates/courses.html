@@ -1,227 +1,68 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}IT Excellence Center Courses{% endblock title %}
+
 {% block maincontent %}
-    
-
-    
-<!-- Main Content  -->
-
-
 <main class="courses-main">
     <section class="courses-hero">
-    <div class="container">
-        <h1>Our Featured Courses</h1>
-        <p>Designed to launch your IT career with hands-on training from industry experts</p>
-        <div class="animated-divider"></div>
-    </div>
-</section>
+        <div class="container">
+            <h1>Our Featured Courses</h1>
+            <p>Designed to launch your IT career with hands-on training from industry experts</p>
+            <div class="animated-divider"></div>
+        </div>
+    </section>
 
     <section class="courses-section">
         <div class="container">
             <div class="courses-filter">
-                <button class="filter-btn active" data-filter="all">All Courses</button>
-                <button class="filter-btn" data-filter="programming">Programming</button>
-                <button class="filter-btn" data-filter="cyber-security">Cyber Security</button>
-                <button class="filter-btn" data-filter="cloud">Cloud Computing</button>
+                <button class="filter-btn {% if not selected_category %}active{% endif %}" 
+                        data-filter="all">All Courses</button>
+                {% for category in categories %}
+                <button class="filter-btn {% if selected_category == category.slug %}active{% endif %}" 
+                        data-filter="{{ category.slug }}">
+                    {{ category.name }}
+                </button>
+                {% endfor %}
             </div>
 
             <div class="courses-grid">
-                <!-- Course 1 -->
-                <div class="course-card" data-category="programming">
-                    <div class="course-badge">Bestseller</div>
+                {% for course in courses %}
+                <div class="course-card" data-category="{{ course.category.slug }}">
+                    {% if course.badge %}
+                    <div class="course-badge">{{ course.get_badge_display }}</div>
+                    {% endif %}
+                    
                     <div class="course-image">
-                        <img src="{% static 'assets\images\course-cyber scurity.jpg' %}" alt="Python Programming">
+                        <img src="{{ course.image.url }}" alt="{{ course.title }}">
                     </div>
+                    
                     <div class="course-content">
-                        <h3>Python Programming</h3>
-                        <p class="course-description">Master Python from basics to advanced concepts including OOP, data structures, and APIs.</p>
+                        <h3>{{ course.title }}</h3>
+                        <p class="course-description">{{ course.short_description }}</p>
+                        
                         <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 8 Weeks</span>
-                            <span><i class="fas fa-certificate"></i> Certificate</span>
-                            <span><i class="fas fa-level-up-alt"></i> Beginner</span>
+                            <span><i class="fas fa-clock"></i> {{ course.duration_weeks }} Weeks</span>
+                            <span><i class="fas fa-certificate"></i> {% if course.is_certified %}Certificate{% endif %}</span>
+                            <span><i class="fas fa-level-up-alt"></i> {{ course.get_level_display }}</span>
                         </div>
+                        
                         <div class="course-price">
-                            <span class="original-price">$299</span>
-                            <span class="current-price">$199</span>
+                            {% if course.original_price %}
+                            <span class="original-price">${{ course.original_price }}</span>
+                            {% endif %}
+                            <span class="current-price">${{ course.current_price }}</span>
                         </div>
-                        <a href="#" class="enroll-btn">Enroll Now</a>
+                        
+                        <a href="{% url 'course_detail' course.slug %}" class="enroll-btn">Enroll Now</a>
                     </div>
                 </div>
-
-                <!-- Course 2 -->
-                <div class="course-card" data-category="cyber-security">
-                    <div class="course-badge">New</div>
-                    <div class="course-image">
-                        <img src="{% static 'assets\images\courses-ethical hacking.jpg' %}" alt="Ethical Hacking">
-                    </div>
-                    <div class="course-content">
-                        <h3>Ethical Hacking</h3>
-                        <p class="course-description">Learn penetration testing, vulnerability assessment, and security tools like Kali Linux
-                            Ubunto.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 12 Weeks</span>
-                            <span><i class="fas fa-certificate"></i> Certificate</span>
-                            <span><i class="fas fa-level-up-alt"></i> Intermediate</span>
-                        </div>
-                        <div class="course-price">
-                            <span class="current-price">$349</span>
-                        </div>
-                        <a href="#" class="enroll-btn">Enroll Now</a>
-                    </div>
-                </div>
-
-                <!-- Course 3 -->
-                <div class="course-card" data-category="cloud">
-                    <div class="course-image">
-                        <img src="{% static 'assets\images\courses-AWS Certified Solutions Architect.jpg' %}" alt="AWS Certified">
-                    </div>
-                    <div class="course-content">
-                        <h3>AWS Certified Solutions Architect</h3>
-                        <p class="course-description">Comprehensive training for AWS certification with hands-on labs and real-world scenarios.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 10 Weeks</span>
-                            <span><i class="fas fa-certificate"></i> Certificate</span>
-                            <span><i class="fas fa-level-up-alt"></i> Advanced</span>
-                        </div>
-                        <div class="course-price">
-                            <span class="current-price">$399</span>
-                        </div>
-                        <a href="#" class="enroll-btn">Enroll Now</a>
-                    </div>
-                </div>
-
-                <!-- Course 4 -->
-                <div class="course-card" data-category="programming">
-                    <div class="course-image">
-                        <img src="{% static 'assets\images\courses-Full Stack Web Development.jpg' %}" alt="Web Development">
-                    </div>
-                    <div class="course-content">
-                        <h3>Full Stack Web Development</h3>
-                        <p class="course-description">Learn HTML, CSS, JavaScript, React, Node.js, and MongoDB to build modern web applications.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 14 Weeks</span>
-                            <span><i class="fas fa-certificate"></i> Certificate</span>
-                            <span><i class="fas fa-level-up-alt"></i> Beginner</span>
-                        </div>
-                        <div class="course-price">
-                            <span class="original-price">$449</span>
-                            <span class="current-price">$349</span>
-                        </div>
-                        <a href="#" class="enroll-btn">Enroll Now</a>
-                    </div>
-                </div>
-
-                <!-- Course 5 -->
-                <div class="course-card" data-category="cyber-security">
-                    <div class="course-badge">Popular</div>
-                    <div class="course-image">
-                        <img src="{% static 'assets\images\courses-Cyber Security Fundamentals.png' %}" alt="Cyber Security">
-                    </div>
-                    <div class="course-content">
-                        <h3>Cyber Security Fundamentals</h3>
-                        <p class="course-description">Essential security principles, threat detection, and risk management strategies.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 6 Weeks</span>
-                            <span><i class="fas fa-certificate"></i> Certificate</span>
-                            <span><i class="fas fa-level-up-alt"></i> Beginner</span>
-                        </div>
-                        <div class="course-price">
-                            <span class="current-price">$249</span>
-                        </div>
-                        <a href="#" class="enroll-btn">Enroll Now</a>
-                    </div>
-                </div>
-
-                <!-- Course 6 -->
-                <div class="course-card" data-category="cloud">
-                    <div class="course-image">
-                        <img src="{% static 'assets\images\courses-Microsoft Azure Administrator.jpg' %}" alt="Microsoft Azure">
-                    </div>
-                    <div class="course-content">
-                        <h3>Microsoft Azure Administrator</h3>
-                        <p class="course-description">Learn to manage Azure subscriptions, resources, storage, and virtual networks.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 8 Weeks</span>
-                            <span><i class="fas fa-certificate"></i> Certificate</span>
-                            <span><i class="fas fa-level-up-alt"></i> Intermediate</span>
-                        </div>
-                        <div class="course-price">
-                            <span class="current-price">$329</span>
-                        </div>
-                        <a href="#" class="enroll-btn">Enroll Now</a>
-                    </div>
-                </div>
-
-                <!-- Course 7 -->
-                <div class="course-card" data-category="programming">
-                    <div class="course-badge">Job Ready</div>
-                    <div class="course-image">
-                        <img src="{% static 'assets\images\courses-Java Programming Masterclass.jpg' %}" alt="Java Programming">
-                    </div>
-                    <div class="course-content">
-                        <h3>Java Programming Masterclass</h3>
-                        <p class="course-description">From basic syntax to advanced Java features, Spring Framework, and enterprise development.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 12 Weeks</span>
-                            <span><i class="fas fa-certificate"></i> Certificate</span>
-                            <span><i class="fas fa-level-up-alt"></i> Intermediate</span>
-                        </div>
-                        <div class="course-price">
-                            <span class="original-price">$399</span>
-                            <span class="current-price">$299</span>
-                        </div>
-                        <a href="#" class="enroll-btn">Enroll Now</a>
-                    </div>
-                </div>
-
-                <!-- Course 8 -->
-                <div class="course-card" data-category="cyber-security">
-                    <div class="course-image">
-                        <img src="{% static 'assets\images\courses-Network Security Specialist.jpg' %}" alt="Network Security">
-                    </div>
-                    <div class="course-content">
-                        <h3>Network Security Specialist</h3>
-                        <p class="course-description">Deep dive into firewalls, VPNs, intrusion detection, and network monitoring.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 10 Weeks</span>
-                            <span><i class="fas fa-certificate"></i> Certificate</span>
-                            <span><i class="fas fa-level-up-alt"></i> Advanced</span>
-                        </div>
-                        <div class="course-price">
-                            <span class="current-price">$379</span>
-                        </div>
-                        <a href="#" class="enroll-btn">Enroll Now</a>
-                    </div>
-                </div>
-
-                <!-- Course 9 -->
-                <div class="course-card" data-category="cloud">
-                    <div class="course-badge">Limited Seats</div>
-                    <div class="course-image">
-                        <img src="{% static 'assets\images\courses-Google Cloud Professional.jpg' %}" alt="Google Cloud">
-                    </div>
-                    <div class="course-content">
-                        <h3>Google Cloud Professional</h3>
-                        <p class="course-description">Comprehensive training for Google Cloud Platform architecture and services.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 9 Weeks</span>
-                            <span><i class="fas fa-certificate"></i> Certificate</span>
-                            <span><i class="fas fa-level-up-alt"></i> Intermediate</span>
-                        </div>
-                        <div class="course-price">
-                            <span class="current-price">$359</span>
-                        </div>
-                        <a href="#" class="enroll-btn">Enroll Now</a>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
 
             <div class="courses-cta">
-                <p>Can't find what you're looking for? <a href="contact.html">Contact us</a> for custom training programs.</p>
+                <p>Can't find what you're looking for? <a href="{% url 'contact' %}">Contact us</a> for custom training programs.</p>
             </div>
         </div>
     </section>
 </main>
-
-{% endblock  %}
+{% endblock %}
