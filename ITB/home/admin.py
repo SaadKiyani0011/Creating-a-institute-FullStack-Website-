@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.modals import Course, MissionVision, TeamMember
+from home.models import Course, MissionVision, TeamMember
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):

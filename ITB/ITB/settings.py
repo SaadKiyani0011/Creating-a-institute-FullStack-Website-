@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'services_a',
     'enroll',
     'contact',
-
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

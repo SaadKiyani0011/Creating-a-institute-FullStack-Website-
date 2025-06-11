@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from home.modals import Course, MissionVision, TeamMember
+from home.models import Course, MissionVision, TeamMember
 
 def home(request):
     context = {
