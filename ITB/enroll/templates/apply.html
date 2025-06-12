@@ -1,42 +1,46 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}IT Excellence Center Enroll Now{% endblock title %}
-{% block maincontent %}
-  
 
-  
+{% block maincontent %}
 <section class="apply-container">
   <div class="apply-header">
     <h1><i class="fas fa-edit"></i> Online Application</h1>
     <p>Complete this form to apply for admission</p>
   </div>
 
-  <form class="application-form">
+  <form class="application-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
     <!-- Personal Information -->
     <fieldset>
       <legend><i class="fas fa-user"></i> Personal Information</legend>
       
       <div class="form-row">
         <div class="input-group">
-          <label for="full-name">Full Name*</label>
-          <input type="text" id="full-name" required>
+          {{ form.full_name.label_tag }}
+          {{ form.full_name }}
+          {{ form.full_name.errors }}
         </div>
         
         <div class="input-group">
-          <label for="dob">Date of Birth*</label>
-          <input type="date" id="dob" required>
+          {{ form.date_of_birth.label_tag }}
+          {{ form.date_of_birth }}
+          {{ form.date_of_birth.errors }}
         </div>
       </div>
 
       <div class="form-row">
         <div class="input-group">
-          <label for="email">Email*</label>
-          <input type="email" id="email" required>
+          {{ form.email.label_tag }}
+          {{ form.email }}
+          {{ form.email.errors }}
         </div>
         
         <div class="input-group">
-          <label for="phone">Phone*</label>
-          <input type="tel" id="phone" required>
+          {{ form.phone.label_tag }}
+          {{ form.phone }}
+          {{ form.phone.errors }}
         </div>
       </div>
     </fieldset>
@@ -46,25 +50,22 @@
       <legend><i class="fas fa-graduation-cap"></i> Academic Background</legend>
       
       <div class="input-group">
-        <label for="last-school">Last Attended School*</label>
-        <input type="text" id="last-school" required>
+        {{ form.last_school.label_tag }}
+        {{ form.last_school }}
+        {{ form.last_school.errors }}
       </div>
       
       <div class="form-row">
         <div class="input-group">
-          <label for="qualification">Highest Qualification*</label>
-          <select id="qualification" required>
-            <option value="">Select</option>
-            <option>High School</option>
-            <option>Diploma</option>
-            <option>Bachelor's Degree</option>
-            <option>Master's Degree</option>
-          </select>
+          {{ form.highest_qualification.label_tag }}
+          {{ form.highest_qualification }}
+          {{ form.highest_qualification.errors }}
         </div>
         
         <div class="input-group">
-          <label for="year">Year Completed*</label>
-          <input type="number" id="year" min="1900" max="2023" required>
+          {{ form.year_completed.label_tag }}
+          {{ form.year_completed }}
+          {{ form.year_completed.errors }}
         </div>
       </div>
     </fieldset>
@@ -74,28 +75,17 @@
       <legend><i class="fas fa-book"></i> Program Details</legend>
       
       <div class="input-group">
-        <label for="program">Select Program*</label>
-        <select id="program" required>
-          <option value="">Choose a program</option>
-          <option>Computer Science</option>
-          <option>Business Administration</option>
-          <option>Electrical Engineering</option>
-          <option>Graphic Design</option>
-        </select>
+        {{ form.program.label_tag }}
+        {{ form.program }}
+        {{ form.program.errors }}
       </div>
       
       <div class="input-group">
-        <label>Enrollment Type*</label>
+        {{ form.enrollment_type.label_tag }}
         <div class="radio-group">
-          <label>
-            <input type="radio" name="enrollment" value="full-time" required>
-            Full Time
-          </label>
-          <label>
-            <input type="radio" name="enrollment" value="part-time">
-            Part Time
-          </label>
+          {{ form.enrollment_type }}
         </div>
+        {{ form.enrollment_type.errors }}
       </div>
     </fieldset>
 
@@ -104,13 +94,15 @@
       <legend><i class="fas fa-file-upload"></i> Documents</legend>
       
       <div class="input-group">
-        <label for="transcript">Academic Transcript*</label>
-        <input type="file" id="transcript" accept=".pdf,.doc,.docx" required>
+        {{ form.transcript.label_tag }}
+        {{ form.transcript }}
+        {{ form.transcript.errors }}
       </div>
       
       <div class="input-group">
-        <label for="id-proof">ID Proof*</label>
-        <input type="file" id="id-proof" accept=".pdf,.jpg,.png" required>
+        {{ form.id_proof.label_tag }}
+        {{ form.id_proof }}
+        {{ form.id_proof.errors }}
       </div>
     </fieldset>
 
@@ -123,4 +115,4 @@
     </div>
   </form>
 </section>
-{% endblock  %}
+{% endblock %}
