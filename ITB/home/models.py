@@ -7,7 +7,7 @@ from ckeditor.fields import RichTextField  # Rich text fields sa ham bold ittali
 class Course(models.Model): # Course model banaya jata ha taake ham courses ki details store kar sakein 
     title = models.CharField(max_length=200) # Course ka title store karne ke liye
     icon = models.CharField(max_length=50, help_text="Font Awesome icon class") # Font Awesome icon class store karne ke liye 
-    image = models.ImageField(upload_to='courses/')  # Course ki image store karne ke liye  
+    image = models.ImageField(upload_to='media/')  # Course ki image store karne ke liye  
     description = models.TextField()
     is_featured = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)
@@ -26,7 +26,7 @@ class MissionVision(models.Model):
 class TeamMember(models.Model):
     name = models.CharField(max_length=100)
     position = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='team/')
+    image = models.ImageField(upload_to='media/')
     is_ceo = models.BooleanField(default=False)
 
     def __str__(self):

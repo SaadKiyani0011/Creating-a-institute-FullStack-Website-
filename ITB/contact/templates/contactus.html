@@ -11,44 +11,28 @@
     <h2>Contact Us</h2>
     <p>Have questions or feedback? Reach out to us!</p>
     
-    {% if messages %}
-    <div class="contact-alerts">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            {{ message }}
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-    
     <div class="contact-container">
         <!-- Contact Form -->
         <div class="contact-form">
-            <form method="POST">
-                {% csrf_token %}
-                
+            <form action="#" method="POST">
                 <div class="form-group">
-                    {{ form.name.label_tag }}
-                    {{ form.name }}
-                    {{ form.name.errors }}
+                    <label for="name">Full Name*</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
                 </div>
                 
                 <div class="form-group">
-                    {{ form.email.label_tag }}
-                    {{ form.email }}
-                    {{ form.email.errors }}
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
                 </div>
                 
                 <div class="form-group">
-                    {{ form.subject.label_tag }}
-                    {{ form.subject }}
-                    {{ form.subject.errors }}
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What's this about?">
                 </div>
                 
                 <div class="form-group">
-                    {{ form.message.label_tag }}
-                    {{ form.message }}
-                    {{ form.message.errors }}
+                    <label for="message">Message*</label>
+                    <textarea id="message" name="message" required placeholder="Your message here..."></textarea>
                 </div>
                 
                 <button type="submit" class="submit-btn">Send Message</button>
@@ -60,32 +44,25 @@
             <h3>Get in Touch</h3>
             <div class="info-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <p>{{ contact_info.address }}</p>
+                <p>123 Education Street, Learning City, 560001</p>
             </div>
             <div class="info-item">
                 <i class="fas fa-phone"></i>
-                <p>{{ contact_info.phone }}</p>
+                <p> +92 344 917 0592</p>
             </div>
             <div class="info-item">
                 <i class="fas fa-envelope"></i>
-                <p>{{ contact_info.email }}</p>
+                <p> info@itexcellence.edus</p>
             </div>
             
             <div class="social-links">
-                {% if contact_info.facebook_url %}
-                <a href="{{ contact_info.facebook_url }}"><i class="fab fa-facebook"></i></a>
-                {% endif %}
-                {% if contact_info.twitter_url %}
-                <a href="{{ contact_info.twitter_url }}"><i class="fab fa-twitter"></i></a>
-                {% endif %}
-                {% if contact_info.instagram_url %}
-                <a href="{{ contact_info.instagram_url }}"><i class="fab fa-instagram"></i></a>
-                {% endif %}
-                {% if contact_info.linkedin_url %}
-                <a href="{{ contact_info.linkedin_url }}"><i class="fab fa-linkedin"></i></a>
-                {% endif %}
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </div>
 </section>
+
 {% endblock %}

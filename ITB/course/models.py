@@ -21,7 +21,7 @@ class Course(models.Model):
     full_description = models.TextField()
     duration_weeks = models.PositiveIntegerField()
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES)
-    image = models.ImageField(upload_to='courses/', default='courses/default.jpg') 
+    image = models.ImageField(upload_to='media/', default='media/default.jpg') 
     original_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     current_price = models.DecimalField(max_digits=6, decimal_places=2)
     is_certified = models.BooleanField(default=True)
