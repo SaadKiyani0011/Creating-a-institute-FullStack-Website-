@@ -41,7 +41,7 @@
                       <a href="{% url 'services' %}" class="nav-link {% if request.path == '/service/' %}active{% endif %}">Services</a>
                     </li>
                     <li class="nav-item">
-                      <a href="{% url 'enroll_now' %}" class="nav-link {% if request.path == '/enroll_now/' %}active{% endif %}">Enroll Now</a>
+                      <a href="{% url 'enroll_now' %}" class="nav-link {% if request.path == '/enroll_now' %}active{% endif %}">Enroll Now</a>
                     </li>
                     <li class="nav-item">
                       <a href="{% url 'contact' %}" class="nav-link {% if request.path == '/contact/' %}active{% endif %}">Contact Us</a>
@@ -133,6 +133,5 @@
             </div>
         </div>
     </footer>
-    
 </body>
 </html>
