@@ -14,5 +14,3 @@ def enroll_now(request):
     
     return render(request, 'apply.html', {'form': form})
 
-def enroll_success(request):
-    return render(request, 'success.html')

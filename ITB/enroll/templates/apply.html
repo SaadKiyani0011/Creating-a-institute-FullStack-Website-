@@ -8,7 +8,17 @@
     <h1><i class="fas fa-edit"></i> Online Application</h1>
     <p>Complete this form to apply for admission</p>
   </div>
-
+  <!-- ✅ START: Success/Error Message -->
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+          {{ message }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <!-- ✅ END: Success/Error Message -->
   <form class="application-form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     
