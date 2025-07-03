@@ -35,22 +35,17 @@
                       <a href="{% url 'aboutus' %}" class="nav-link {% if request.path == '/aboutus/' %}active{% endif %}">About Us</a>
                     </li>
                     <li class="nav-item">
-                      <a href="{% url 'courses' %}" class="nav-link {% if request.path == '/courses/' %}active{% endif %}">Courses</a>
+                      <a href="{% url 'courses' %}" class="nav-link {% if request.path == '/course/' %}active{% endif %}">Courses</a>
                     </li>
                     <li class="nav-item">
                       <a href="{% url 'services' %}" class="nav-link {% if request.path == '/service/' %}active{% endif %}">Services</a>
                     </li>
                     <li class="nav-item">
-<<<<<<< HEAD
                       <a href="{% url 'enroll_now' %}" class="nav-link {% if request.path == '/enroll/' %}active{% endif %}">Enroll Now</a>
-=======
-                      <a href="{% url 'enroll_now' %}" class="nav-link {% if request.path == '/enroll_now' %}active{% endif %}">Enroll Now</a>
->>>>>>> 06c84487be73ba086c17af2b006e87249d9be493
                     </li>
                     <li class="nav-item">
                       <a href="{% url 'contact' %}" class="nav-link {% if request.path == '/contact/' %}active{% endif %}">Contact Us</a>
                     </li>
-
             </ul>
             
             <!-- Auth Buttons on Right -->
