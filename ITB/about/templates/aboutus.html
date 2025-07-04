@@ -91,7 +91,7 @@
         <section class="apply-now-section">
             <div class="container">
                 <h3>Ready to start your journey with us?</h3>
-                <a href="apply.html" class="apply-now-btn">
+                <a href="{% url 'enroll_now' %}" class="apply-now-btn {% if request.path == '/enroll/' %}active{% endif %}">
                     Apply Now <i class="fas fa-arrow-right"></i>
                 </a>
             </div>

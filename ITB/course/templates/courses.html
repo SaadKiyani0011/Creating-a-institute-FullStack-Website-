@@ -53,7 +53,7 @@
                             <span class="current-price">${{ course.current_price }}</span>
                         </div>
                         
-                        <a href="{% url 'course_detail' course.slug %}" class="enroll-btn">Enroll Now</a>
+                        <a href="{% url 'enroll_now' %}" class="enroll-btn {% if request.path == '/enroll/' %}active{% endif %}">Enroll Now</a>
                     </div>
                 </div>
                 {% endfor %}
