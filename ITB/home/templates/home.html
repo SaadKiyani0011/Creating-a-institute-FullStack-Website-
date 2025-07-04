@@ -27,7 +27,7 @@
             </div>
 
             <div class="explore-more">
-                <a href="{% url 'courses' %}" class="explore-btn">Explore More Courses <i class="fas fa-arrow-right"></i></a>
+                <a href="{% url 'courses' %}" class="explore-btn {% if request.path == '/course/' %}active{% endif %}">Explore More Courses <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
