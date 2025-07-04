@@ -60,7 +60,7 @@
             </div>
 
             <div class="courses-cta">
-                <p>Can't find what you're looking for? <a href="{% url 'contact' %}">Contact us</a> for custom training programs.</p>
+                <p>Can't find what you're looking for? <a href="{% url 'contact' %}" class="nav-link {% if request.path == '/contact/' %}active{% endif %}">Contact us </a> for custom training programs.</p>
             </div>
         </div>
     </section>
