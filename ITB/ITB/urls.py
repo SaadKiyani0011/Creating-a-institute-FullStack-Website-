@@ -27,7 +27,7 @@ urlpatterns = [
     path('',include('about.urls')),
     path('',include('services_a.urls')),
     path('',include('course.urls')),
-    path('', include('login.urls')),
+    path('login/', include('login.urls')),
 
 ]
 
