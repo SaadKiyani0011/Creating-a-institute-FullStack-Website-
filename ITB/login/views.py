@@ -33,3 +33,4 @@ def signup_view(request):
             user.save()
             messages.success(request, 'Signup successful! Please login')
             return redirect('login')
+    return render(request, 'login.html')
